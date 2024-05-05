@@ -5,15 +5,15 @@ const themeSrc = "https://cdn-icons-png.flaticon.com/512/6803/6803223.png";
 
 const links = [
   {
-    link: `/mylist/`,
+    link: `/`,
     name: "Home",
   },
   {
-    link: `/mylist/add`,
+    link: `/add`,
     name: "Add",
   },
   {
-    link: `/mylist/load`,
+    link: `/load`,
     name: "Load",
   },
 ];
