@@ -1,0 +1,4 @@
+Add Functionality to NewItem.tsx so that when focused on "Tags Input" and ENTER is pressed, new tags gets added instead of form submition
+Add Functionality to NewItem.tsx so that added tag gets removed on user click hover shows X icon
+
+Add Functionality to Item.tsx so that items can be edited
