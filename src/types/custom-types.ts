@@ -4,6 +4,14 @@ export interface ItemInterface {
   link: string;
   tags?: Array<string>;
 }
+export interface NotificationInterface {
+  id?: string;
+  text: string;
+  duration: number;
+}
+export interface NotificationState {
+  notifications: NotificationInterface[]
+}
 export interface ThemeState {
   currentTheme: 'dark' | 'light';
 }

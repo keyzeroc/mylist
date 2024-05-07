@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/UI/Navbar";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import Notifications from "../components/notification/Notifications";
 
 export default function RootLayout() {
   const theme = useSelector((state: RootState) => state.theme.currentTheme);
@@ -11,6 +12,7 @@ export default function RootLayout() {
       className={`min-h-full text-color-content bg-color-bg bg-gradient-to-b from-color-gradient-1 to-color-gradient-2 ${theme}`}
     >
       <Navbar />
+      <Notifications />
       <main className={`h-full p-4`}>
         <Outlet />
       </main>

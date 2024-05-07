@@ -6,13 +6,21 @@ type InputProps = {
   label?: string;
   placeholder?: string;
   onChangeCallback?: (value: string) => void;
+  onKeyDownCallback?: () => void;
 };
 
 export const Input = forwardRef(function Input(
   props: InputProps,
   ref?: React.LegacyRef<HTMLInputElement> | undefined
 ) {
-  const { name, className, label, placeholder, onChangeCallback } = props;
+  const {
+    name,
+    className,
+    label,
+    placeholder,
+    onChangeCallback,
+    onKeyDownCallback,
+  } = props;
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!onChangeCallback) return;
@@ -33,6 +41,12 @@ export const Input = forwardRef(function Input(
         type="text"
         ref={ref}
         placeholder={placeholder}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            onKeyDownCallback && onKeyDownCallback();
+          }
+        }}
       />
     </div>
   );

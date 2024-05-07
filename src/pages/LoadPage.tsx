@@ -1,9 +1,8 @@
-const copyPng = "https://cdn-icons-png.flaticon.com/512/1621/1621635.png";
-const pastePng = "https://cdn-icons-png.flaticon.com/512/748/748035.png";
 import Icon from "../components/UI/Icon";
 import { useDispatch, useSelector } from "react-redux";
 import { replaceList } from "../store/ListSlice";
 import { RootState } from "../store/store";
+import { pasteIcon, copyIcon } from "../assets/images";
 
 export default function LoadPage() {
   const list = useSelector((state: RootState) => state.list.list);
@@ -34,7 +33,7 @@ export default function LoadPage() {
         <p>Import list in JSON format</p>
         <Icon
           className="min-w-max max-w-min"
-          icon={pastePng}
+          icon={pasteIcon}
           alt="paste JSON"
           onClick={importListHandler}
         />
@@ -43,7 +42,7 @@ export default function LoadPage() {
         <p>Export list in JSON format</p>
         <Icon
           className="min-w-max max-w-min"
-          icon={copyPng}
+          icon={copyIcon}
           alt="copy JSON"
           onClick={exportListHandler}
         />

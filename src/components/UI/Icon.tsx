@@ -11,7 +11,7 @@ function Icon({ icon, alt, onClick, className }: Props) {
   const theme = useSelector((state: RootState) => state.theme.currentTheme);
   return (
     <button
-      className={`rounded-sm w-full flex justify-center hover:bg-color-accent-2 py-1 ${className}`}
+      className={`rounded-sm w-full flex justify-center items-center hover:bg-color-accent-2 py-1 ${className}`}
       onClick={onClick}
     >
       <img

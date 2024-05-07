@@ -26,7 +26,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Input name="search" onChangeCallback={setSearchValue} />
+      <Input name="search" placeholder="type to search items" onChangeCallback={setSearchValue} />
       <div className="flex flex-col items-center gap-2 mt-4">
         {filteredList.map((item) => (
           <Item

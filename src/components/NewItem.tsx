@@ -4,6 +4,8 @@ import { Input } from "./UI/Input";
 import { ItemInterface } from "../types/custom-types";
 import { useDispatch } from "react-redux";
 import { addItem } from "../store/ListSlice";
+import TagsList from "./tag/TagsList";
+import { pushNotification } from "../store/NotificationSlice";
 
 export default function NewItem() {
   const dispatch = useDispatch();
@@ -31,9 +33,11 @@ export default function NewItem() {
       tags,
     };
     dispatch(addItem({ newItem }));
-    alert("Item has been added!");
+
+    const notification = { text: "Item has been added", duration: 3000 };
+    dispatch(pushNotification({ notification }));
   };
-  const onAddTag = () => {
+  const onAddTagHandler = () => {
     //@ts-ignore
     const tag = itemTagRef.current.value;
     if (tag.trim() === "") return;
@@ -41,6 +45,11 @@ export default function NewItem() {
     setTags((prevTags) => [...prevTags, tag]);
     //@ts-ignore
     itemTagRef.current.value = "";
+  };
+  const onRemoveTagHandler = (tag: string) => {
+    const foundTag = tags.find((currentTag) => currentTag === tag);
+    if (!foundTag) return;
+    setTags((prevTags) => prevTags.filter((currentTag) => currentTag !== tag));
   };
 
   return (
@@ -54,26 +63,22 @@ export default function NewItem() {
             ref={itemTagRef}
             className="flex-1"
             label="Enter tags:"
+            onKeyDownCallback={onAddTagHandler}
           />
           <button
             className="bg-color-accent rounded-md p-2 max-w-max self-end"
-            onClick={onAddTag}
+            onClick={onAddTagHandler}
             type="button"
           >
             Add Tag
           </button>
         </div>
-        <div>
-          <ul className="flex flex-row gap-2 flex-wrap mt-1">
-            {tags.map((tag, index) => (
-              <li
-                className="bg-color-accent/70 px-1 rounded-sm"
-                key={"tag:" + index}
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-1">
+          <TagsList
+            tags={tags}
+            removable={true}
+            onRemove={onRemoveTagHandler}
+          />
         </div>
       </div>
       <button className="bg-color-accent rounded-md p-2" type="submit">

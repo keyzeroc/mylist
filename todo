@@ -1,4 +1,9 @@
-Add Functionality to NewItem.tsx so that when focused on "Tags Input" and ENTER is pressed, new tags gets added instead of form submition
-Add Functionality to NewItem.tsx so that added tag gets removed on user click hover shows X icon
-
 Add Functionality to Item.tsx so that items can be edited
+Add Functionality to Item.tsx so that there is a confirmation prompt upon removing an item
+
+Create new route where all the tags are shown (the more tags appears the bigger it is) and can be selected to show tag specific items 
+
+Add Functionality to Modal.tsx so that it can be confirmed (callback on press confirm)
+Replace all the alerts with Modals
+
+Add opacity animation to Notification.tsx

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { switchTheme } from "../../store/ThemeSlice";
-const themeSrc = "https://cdn-icons-png.flaticon.com/512/6803/6803223.png";
+import { themeIcon } from "../../assets/images";
 
 const links = [
   {
@@ -38,7 +38,7 @@ export default function Navbar() {
         className="min-w-10 min-h-10 w-10 h-10"
         onClick={() => dispatch(switchTheme())}
       >
-        <img src={themeSrc} alt="theme change" />
+        <img src={themeIcon} alt="theme change" />
       </button>
     </nav>
   );

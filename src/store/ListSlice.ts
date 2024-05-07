@@ -28,5 +28,4 @@ export const listSlice = createSlice({
 })
 
 export const { addItem, removeItem, replaceList } = listSlice.actions
-
 export default listSlice.reducer
