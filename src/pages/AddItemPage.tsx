@@ -1,5 +1,5 @@
-import NewItem from "../components/NewItem";
+import EditItem from "../components/item/EditItem";
 
 export default function AddItemPage() {
-  return <NewItem />;
+  return <EditItem id="" name="" tags={[]} link="" type="new" />;
 }

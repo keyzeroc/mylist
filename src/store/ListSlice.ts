@@ -11,7 +11,8 @@ export const listSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      state.list.push(action.payload.newItem);
+      const newItem = action.payload.newItem
+      state.list.push(newItem);
       saveListToLocalStorage(state.list);
     },
     removeItem: (state, action) => {
@@ -23,9 +24,15 @@ export const listSlice = createSlice({
       const newList = action.payload.newList;
       state.list = newList;
       saveListToLocalStorage(newList);
+    },
+    updateItem: (state, action) => {
+      const newItem = action.payload.newItem;
+      state.list = state.list.map(item => {
+        return item.id === newItem.id ? newItem : item;
+      });
     }
   }
 })
 
-export const { addItem, removeItem, replaceList } = listSlice.actions
+export const { addItem, removeItem, replaceList, updateItem } = listSlice.actions
 export default listSlice.reducer

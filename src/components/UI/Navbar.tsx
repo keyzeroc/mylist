@@ -38,7 +38,7 @@ export default function Navbar() {
         className="min-w-10 min-h-10 w-10 h-10"
         onClick={() => dispatch(switchTheme())}
       >
-        <img src={themeIcon} alt="theme change" />
+        <img src={themeIcon} alt="change theme" />
       </button>
     </nav>
   );

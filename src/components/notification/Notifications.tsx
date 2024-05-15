@@ -2,9 +2,7 @@ import { RootState } from "../../store/store";
 import Notification from "./Notification";
 import { useSelector } from "react-redux";
 
-type Props = {};
-
-export default function Notifications({}: Props) {
+export default function Notifications() {
   const notifications = useSelector(
     (state: RootState) => state.notifications.notifications
   );

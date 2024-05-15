@@ -8,14 +8,16 @@ export default function RootLayout() {
   const theme = useSelector((state: RootState) => state.theme.currentTheme);
 
   return (
-    <div
-      className={`min-h-full text-color-content bg-color-bg bg-gradient-to-b from-color-gradient-1 to-color-gradient-2 ${theme}`}
-    >
-      <Navbar />
-      <Notifications />
-      <main className={`h-full p-4`}>
-        <Outlet />
-      </main>
-    </div>
+    <>
+      <div
+        className={`min-h-full text-color-content bg-color-bg bg-gradient-to-b from-color-gradient-1 to-color-gradient-2 ${theme}`}
+      >
+        <Notifications />
+        <Navbar />
+        <main className={`h-full p-6`}>
+          <Outlet />
+        </main>
+      </div>
+    </>
   );
 }

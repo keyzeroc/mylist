@@ -10,18 +10,16 @@ type InputProps = {
 };
 
 export const Input = forwardRef(function Input(
-  props: InputProps,
-  ref?: React.LegacyRef<HTMLInputElement> | undefined
-) {
-  const {
+  {
     name,
     className,
     label,
     placeholder,
     onChangeCallback,
     onKeyDownCallback,
-  } = props;
-
+  }: InputProps,
+  ref?: React.LegacyRef<HTMLInputElement> | undefined
+) {
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!onChangeCallback) return;
     const value = event.target.value;

@@ -1,51 +1,62 @@
-import Icon from "../components/UI/Icon";
 import { useDispatch, useSelector } from "react-redux";
 import { replaceList } from "../store/ListSlice";
 import { RootState } from "../store/store";
-import { pasteIcon, copyIcon } from "../assets/images";
+import { pushNotification } from "../store/NotificationSlice";
+import { NotificationInterface } from "../types/custom-types";
 
 export default function LoadPage() {
   const list = useSelector((state: RootState) => state.list.list);
   const dispatch = useDispatch();
+
   const importListHandler = async () => {
     const pastedList = await navigator.clipboard.readText();
     let parsedList;
     try {
       parsedList = await JSON.parse(pastedList);
     } catch (err) {
-      alert(`Entered list is not valid JSON, pasted value:\n${pastedList}`);
+      const notification: NotificationInterface = {
+        text: "Entered list is not valid JSON, please check and try again!",
+        duration: 3000,
+      };
+      dispatch(pushNotification({ notification }));
       return;
     }
-    let userReply = prompt(
-      "Are you sure you want to replace existing list with the one you pasted in? Please note that existing list will be lost.\nIf you still want to proceed, type 'yes' and press OK"
+    let userConfirm = confirm(
+      "Are you sure you want to replace the existing list? Please note that the existing list will be lost.\nIf you still want to proceed press OK."
     );
-    if (userReply !== "yes") return;
+    if (!userConfirm) return;
     dispatch(replaceList({ newList: parsedList }));
+    const notification: NotificationInterface = {
+      text: "List replaced!",
+      duration: 3000,
+    };
+    dispatch(pushNotification({ notification }));
   };
+
   const exportListHandler = async () => {
     await navigator.clipboard.writeText(JSON.stringify(list));
-    alert("Exported to clipboard!");
+    const notification: NotificationInterface = {
+      text: "List copied to clipboard!",
+      duration: 3000,
+    };
+    dispatch(pushNotification({ notification }));
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex flex-row gap-2">
-        <p>Import list in JSON format</p>
-        <Icon
-          className="min-w-max max-w-min"
-          icon={pasteIcon}
-          alt="paste JSON"
+    <div className="w-full flex justify-center">
+      <div className="w-[50%] flex flex-col gap-2">
+        <button
           onClick={importListHandler}
-        />
-      </div>
-      <div className="flex flex-row gap-2">
-        <p>Export list in JSON format</p>
-        <Icon
-          className="min-w-max max-w-min"
-          icon={copyIcon}
-          alt="copy JSON"
+          className="bg-color-accent rounded-md p-2 items-center"
+        >
+          Import list in JSON format
+        </button>
+        <button
           onClick={exportListHandler}
-        />
+          className="bg-color-accent rounded-md p-2 items-center"
+        >
+          Export list in JSON format
+        </button>
       </div>
     </div>
   );

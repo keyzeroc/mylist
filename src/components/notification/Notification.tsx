@@ -13,10 +13,11 @@ export default function Notification({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const notiTimeout = setTimeout(() => {
+    // const notiTimeout = setTimeout(() => {
+    setTimeout(() => {
       dispatch(clearNotification({ id }));
     }, duration);
-    return () => clearTimeout(notiTimeout);
+    // return () => clearTimeout(notiTimeout);
   });
 
   return (

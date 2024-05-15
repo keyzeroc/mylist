@@ -5,13 +5,15 @@ type Props = {
   alt: string;
   onClick?: () => void;
   className?: string;
+  type?: "submit" | "button" | "reset";
 };
 
-function Icon({ icon, alt, onClick, className }: Props) {
+function Icon({ icon, alt, onClick, className, type = "button" }: Props) {
   const theme = useSelector((state: RootState) => state.theme.currentTheme);
   return (
     <button
-      className={`rounded-sm w-full flex justify-center items-center hover:bg-color-accent-2 py-1 ${className}`}
+      type={type}
+      className={`rounded-sm w-full flex justify-center items-center hover:bg-color-accent-2 p-1 ${className}`}
       onClick={onClick}
     >
       <img

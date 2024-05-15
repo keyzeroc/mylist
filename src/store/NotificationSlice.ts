@@ -20,8 +20,7 @@ const notificationSlice = createSlice({
       state.notifications.push(newNotification);
     },
     clearNotification: (state, action) => {
-      const foundNoti = state.notifications.find(noti => noti.id === action.payload.id);
-      if (foundNoti) state.notifications = state.notifications.filter(noti => noti.id !== action.payload.id);
+      state.notifications = state.notifications.filter(noti => noti.id !== action.payload.id);
     }
   }
 });
