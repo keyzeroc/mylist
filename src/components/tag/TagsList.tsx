@@ -2,20 +2,31 @@ import Tag from "./Tag";
 
 type TagsListProps = {
   tags: Array<string> | undefined;
-  removable: boolean;
-  onRemove?: (tag: string) => void;
+  clickable: boolean;
+  clickableIcon?: string;
+  onTagClick?: (tag: string) => void;
+  isFlexCol?: boolean;
 };
 
-export default function TagsList({ tags, removable, onRemove }: TagsListProps) {
+export default function TagsList({
+  tags,
+  clickable,
+  onTagClick,
+  clickableIcon,
+  isFlexCol,
+}: TagsListProps) {
   return (
-    <ul className="flex flex-row gap-2 flex-wrap">
+    <ul
+      className={`flex ${isFlexCol ? "flex-col" : "flex-row"} gap-2 flex-wrap`}
+    >
       {tags &&
         tags.map((tag) => (
           <Tag
             key={"tag:" + tag}
             tag={tag}
-            removable={removable}
-            onRemove={onRemove}
+            clickable={clickable}
+            onTagClick={onTagClick}
+            clickableIcon={clickableIcon}
           />
         ))}
     </ul>

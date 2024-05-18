@@ -6,7 +6,7 @@ import { addItem, updateItem } from "../../store/ListSlice";
 import { ItemInterface, NotificationInterface } from "../../types/custom-types";
 import { pushNotification } from "../../store/NotificationSlice";
 import TagsList from "../tag/TagsList";
-import { saveIcon } from "../../assets/images";
+import { saveIcon, deleteIcon } from "../../assets/images";
 import Icon from "../UI/Icon";
 
 interface EditItemProps extends ItemInterface {
@@ -93,8 +93,9 @@ export default function EditItem({
         <div className="mt-1">
           <TagsList
             tags={tags}
-            removable={true}
-            onRemove={onRemoveTagHandler}
+            clickable={true}
+            clickableIcon={deleteIcon}
+            onTagClick={onRemoveTagHandler}
           />
         </div>
       </div>

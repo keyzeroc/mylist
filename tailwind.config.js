@@ -12,7 +12,8 @@ export default {
         'color-gradient-2': 'rgba(var(--color-gradient-2), <alpha-value>)',
         'color-content': 'rgba(var(--color-content), <alpha-value>)',
         'color-accent': 'rgba(var(--color-accent), <alpha-value>)',
-        'color-accent-2': 'rgba(var(--color-accent-2), <alpha-value>)'
+        'color-accent-2': 'rgba(var(--color-accent-2), <alpha-value>)',
+        'color-complementary-1': 'rgba(var(--color-complementary-1), <alpha-value>)'
       }
     },
   },

@@ -58,7 +58,7 @@ export default function Item({ id, link, name, tags }: ItemProps) {
             </div>
           </div>
           <div className="px-2">
-            <TagsList tags={tags} removable={false} />
+            <TagsList tags={tags} clickable={false} />
           </div>
         </>
       )}

@@ -16,3 +16,5 @@ export const saveIcon =
   "https://cdn-icons-png.flaticon.com/512/5662/5662990.png";
 export const addIcon =
   "https://cdn-icons-png.flaticon.com/512/3161/3161837.png";
+export const expandIcon =
+  "https://cdn-icons-png.flaticon.com/512/3502/3502458.png";
