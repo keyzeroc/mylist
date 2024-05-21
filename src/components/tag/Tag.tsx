@@ -24,8 +24,8 @@ export default function Tag({
 
   return (
     <li
-      className={`bg-color-accent-2 px-1 rounded-sm flex flex-row items-center gap-1 text-nowrap ${
-        isSelected && "bg-color-complementary-1"
+      className={`bg-color-accent/40 px-1 rounded-sm flex flex-row items-center gap-1 text-nowrap ${
+        isSelected && "bg-color-complementary-1/40"
       }`}
     >
       {!clickable && !clickableIcon && <p>{tag}</p>}

@@ -7,6 +7,7 @@ type InputProps = {
   placeholder?: string;
   onChangeCallback?: (value: string) => void;
   onKeyDownCallback?: () => void;
+  autocomplete?: "on" | "off";
 };
 
 export const Input = forwardRef(function Input(
@@ -17,6 +18,7 @@ export const Input = forwardRef(function Input(
     placeholder,
     onChangeCallback,
     onKeyDownCallback,
+    autocomplete,
   }: InputProps,
   ref?: React.LegacyRef<HTMLInputElement> | undefined
 ) {
@@ -30,6 +32,7 @@ export const Input = forwardRef(function Input(
     <div className={className}>
       {label && <label htmlFor={name}>{label}</label>}
       <input
+        autoComplete={autocomplete}
         onChange={onChangeHandler}
         id={name}
         className={

@@ -10,18 +10,6 @@ body,
   height: 100%;
 }
 
-/*
-    --color-purple-100: 229, 225, 234;
-    --color-purple-200: 203, 191, 223;
-    --color-purple-300: 181, 145, 217;
-    --color-purple-400: 156, 90, 221;
-    --color-purple-500: 130, 28, 233;
-    --color-purple-600: 105, 36, 174;
-    --color-purple-700: 79, 40, 118;
-    --color-purple-800: 51, 34, 68;
-    --color-purple-900: 26, 22, 29;
-*/
-
 @layer base {
   :root {
     --color-bg: 49, 46, 129;
@@ -30,9 +18,10 @@ body,
     --color-content: 245, 245, 245;
     --color-accent: 39, 155, 99;
     --color-accent-2: 39, 136, 88;
-    --color-complementary-1: 130, 28, 233;
+    --color-complementary-1: 124, 34, 115;
   }
 }
+
 .dark {
   --color-bg: 49, 46, 129;
   --color-gradient-1: 15, 11, 35;
@@ -40,7 +29,7 @@ body,
   --color-content: 245, 245, 245;
   --color-accent: 39, 155, 99;
   --color-accent-2: 39, 136, 88;
-  --color-complementary-1: 130, 28, 233;
+  --color-complementary-1: 124, 34, 115;
 }
 
 .light {

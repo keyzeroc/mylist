@@ -5,12 +5,16 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import ItemList from "../components/item/ItemList";
 import TagBar from "../components/tag/TagBar";
+import { useListTags } from "../hooks/useListTags";
 
 export default function HomePage() {
-  const list = useSelector((state: RootState) => state.list.list);
+  const list: ItemInterface[] = useSelector(
+    (state: RootState) => state.list.list
+  );
   const [filteredList, setFilteredList] = useState<Array<ItemInterface>>([]);
   const [selectedTag, setSelectedTag] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [tagList] = useListTags();
 
   useEffect(() => {
     const searchArray = searchValue.toLowerCase().split(" ");
@@ -36,16 +40,6 @@ export default function HomePage() {
     );
   }, [searchValue, selectedTag, list]);
 
-  const getAllTags = (): Array<string> => {
-    const uniqueTags = new Array<string>();
-    list.forEach((item) => {
-      item.tags?.forEach((tag) => {
-        if (!uniqueTags.includes(tag)) uniqueTags.push(tag);
-      });
-    });
-    return uniqueTags;
-  };
-
   const onTagSelectHandler = (tag: string) => {
     console.log(tag);
     setSelectedTag((prevSelectedTag) => (prevSelectedTag === tag ? "" : tag));
@@ -53,7 +47,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-row gap-4">
-      <TagBar tags={getAllTags()} onTagSelect={onTagSelectHandler} />
+      <TagBar tags={tagList} onTagSelect={onTagSelectHandler} />
       <div className="flex flex-col gap-2 flex-1 min-w-48">
         <Input
           name="search"

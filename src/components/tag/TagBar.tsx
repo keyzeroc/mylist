@@ -7,7 +7,7 @@ interface TagBarProps {
 
 export default function TagBar({ tags, onTagSelect }: TagBarProps) {
   return (
-    <div className="flex flex-col max-w-min bg-color-accent p-2 rounded-md">
+    <div className="flex flex-col max-w-min bg-color-accent/20 p-2 rounded-md">
       <TagsList
         tags={tags}
         clickable={true}

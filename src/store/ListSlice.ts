@@ -27,10 +27,12 @@ export const listSlice = createSlice({
     },
     updateItem: (state, action) => {
       const newItem = action.payload.newItem;
-      state.list = state.list.map(item => {
+      const newList = state.list.map(item => {
         return item.id === newItem.id ? newItem : item;
       });
-    }
+      state.list = newList;
+      saveListToLocalStorage(newList);
+    },
   }
 })
 
