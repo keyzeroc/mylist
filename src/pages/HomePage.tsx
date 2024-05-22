@@ -41,7 +41,6 @@ export default function HomePage() {
   }, [searchValue, selectedTag, list]);
 
   const onTagSelectHandler = (tag: string) => {
-    console.log(tag);
     setSelectedTag((prevSelectedTag) => (prevSelectedTag === tag ? "" : tag));
   };
 

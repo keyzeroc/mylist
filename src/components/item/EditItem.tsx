@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { Input } from "../UI/Input";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useRef, useState } from "react";
-import { addItem, updateItem } from "../../store/ListSlice";
+import { addItem, removeItem, updateItem } from "../../store/ListSlice";
 import { ItemInterface, NotificationInterface } from "../../types/custom-types";
 import { pushNotification } from "../../store/NotificationSlice";
 import TagsList from "../tag/TagsList";
@@ -31,16 +31,10 @@ export default function EditItem({
   const [tagList] = useListTags();
   const [suggestedTags, setSuggestedTags] = useState<string[]>([]);
 
-
   useEffect(() => {
     itemNameRef.current!.value = name;
     itemLinkRef.current!.value = link;
   }, []);
-
-  useEffect(() => {
-    console.log(tags);
-  }, [tags]);
-
 
   const onFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -53,7 +47,6 @@ export default function EditItem({
       link: newLink,
       tags,
     };
-    console.log(newItem);
 
     if (type === "new") dispatch(addItem({ newItem }));
     else if (type === "edit") dispatch(updateItem({ newItem }));
@@ -72,6 +65,21 @@ export default function EditItem({
       setTags([]);
       setSuggestedTags([]);
     }
+  };
+
+  const onRemoveHandler = () => {
+    const userConfirm = confirm(
+      "Are you sure you want to remove item? There is no going back."
+    );
+    if (!userConfirm) return;
+
+    dispatch(removeItem({ id }));
+
+    const notification: NotificationInterface = {
+      text: `Item has been removed!`,
+      duration: 2000,
+    };
+    dispatch(pushNotification({ notification }));
   };
 
   const onAddTagHandler = () => {
@@ -103,11 +111,13 @@ export default function EditItem({
   return (
     <form className="flex flex-col gap-2" onSubmit={onFormSubmit}>
       <Input
+        className={`${type === "edit" && "p-2"}`}
         name="name"
         ref={itemNameRef}
         label={`${type === "new" ? "Enter" : "Edit"} name:`}
       />
       <Input
+        className={`${type === "edit" && "p-2"}`}
         name="link"
         ref={itemLinkRef}
         label={`${type === "new" ? "Enter" : "Edit"} link:`}
@@ -119,7 +129,7 @@ export default function EditItem({
             name="tag"
             ref={itemTagRef}
             onChangeCallback={suggestTags}
-            className="flex-1"
+            className={`flex-1 ${type === "edit" && "p-2"}`}
             label={`${
               type === "new" ? "Add" : "Edit"
             } tags: (press Enter to add tag)`}
@@ -144,7 +154,7 @@ export default function EditItem({
             </div>
           )}
         </div>
-        <div className="mt-1">
+        <div className={`mt-1 ${type === "edit" && "p-2"}`}>
           <TagsList
             tags={tags}
             clickable={true}
@@ -153,12 +163,17 @@ export default function EditItem({
           />
         </div>
       </div>
-      <Icon
-        className="bg-color-complementary-1/40"
-        icon={saveIcon}
-        alt="save"
-        type="submit"
-      />
+      <div className="flex flex-row">
+        <Icon
+          className={`${type === "new" && "bg-color-accent"}`}
+          icon={saveIcon}
+          alt="save"
+          type="submit"
+        />
+        {type === "edit" && (
+          <Icon icon={deleteIcon} alt="delete" onClick={onRemoveHandler} />
+        )}
+      </div>
     </form>
   );
 }

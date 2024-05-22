@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { ItemInterface, NotificationInterface } from "../../types/custom-types";
 import Icon from "../UI/Icon";
-import { copyIcon, deleteIcon, editIcon } from "../../assets/images";
+import { copyIcon, editIcon } from "../../assets/images";
 import TagsList from "../tag/TagsList";
 import EditItem from "./EditItem";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../../store/ListSlice";
 import { pushNotification } from "../../store/NotificationSlice";
 
 interface ItemProps extends ItemInterface {}
@@ -13,21 +12,6 @@ interface ItemProps extends ItemInterface {}
 export default function Item({ id, link, name, tags }: ItemProps) {
   const dispatch = useDispatch();
   const [isEditMode, setIsEditMode] = useState(false);
-
-  const onRemoveHandler = () => {
-    const userConfirm = confirm(
-      "Are you sure you want to remove item? There is no going back."
-    );
-    if (!userConfirm) return;
-
-    dispatch(removeItem({ id }));
-
-    const notification: NotificationInterface = {
-      text: `Item has been removed!`,
-      duration: 2000,
-    };
-    dispatch(pushNotification({ notification }));
-  };
 
   const onCopyLink = () => {
     navigator.clipboard.writeText(link);
@@ -38,12 +22,14 @@ export default function Item({ id, link, name, tags }: ItemProps) {
     dispatch(pushNotification({ notification }));
   };
 
+  const onSwitchEditModeHandler = () => {
+    setIsEditMode((prevState) => !prevState);
+  };
+
   return (
     <div className="w-full flex bg-color-accent/20 flex-col rounded-md gap-2 border border-color-accent">
       {isEditMode && (
-        <div className="p-2 pb-0">
-          <EditItem id={id} link={link} tags={tags} name={name} type="edit" />
-        </div>
+        <EditItem id={id} link={link} tags={tags} name={name} type="edit" />
       )}
       {!isEditMode && (
         <>
@@ -66,11 +52,8 @@ export default function Item({ id, link, name, tags }: ItemProps) {
         <Icon
           icon={editIcon}
           alt={isEditMode ? "confirm changes" : "edit"}
-          onClick={() => setIsEditMode((prevState) => !prevState)}
+          onClick={onSwitchEditModeHandler}
         />
-        {isEditMode && (
-          <Icon icon={deleteIcon} alt="delete" onClick={onRemoveHandler} />
-        )}
       </div>
     </div>
   );
