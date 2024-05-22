@@ -7,7 +7,7 @@ type ItemListProps = {
 
 export default function ItemList({ list }: ItemListProps) {
   return (
-    <div className="flex flex-col items-center gap-2 mt-4">
+    <div className="flex flex-col items-center gap-4 mt-4">
       {list.map((item) => (
         <Item
           key={item.id}

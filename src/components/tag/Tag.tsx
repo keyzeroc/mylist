@@ -6,6 +6,7 @@ interface TagProps {
   clickable: boolean;
   clickableIcon?: string;
   onTagClick?: (tag: string) => void;
+  isTagBackground?: boolean;
 }
 
 export default function Tag({
@@ -13,6 +14,7 @@ export default function Tag({
   onTagClick,
   clickable,
   clickableIcon,
+  isTagBackground = true,
 }: TagProps) {
   const [isSelected, setIsSelected] = useState(false);
 
@@ -24,8 +26,10 @@ export default function Tag({
 
   return (
     <li
-      className={`bg-color-accent/40 px-1 rounded-sm flex flex-row items-center gap-1 text-nowrap ${
-        isSelected && "bg-color-complementary-1/40"
+      className={`px-1 rounded-sm flex flex-row items-center gap-1 text-nowrap ${
+        !isTagBackground && !isSelected && "hover:bg-color-accent/20"
+      } ${isSelected && "bg-color-accent/40"} ${
+        isTagBackground && "bg-color-accent/40"
       }`}
     >
       {!clickable && !clickableIcon && <p>{tag}</p>}

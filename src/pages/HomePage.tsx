@@ -4,8 +4,8 @@ import { ItemInterface } from "../types/custom-types";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import ItemList from "../components/item/ItemList";
-import TagBar from "../components/tag/TagBar";
 import { useListTags } from "../hooks/useListTags";
+import TagsList from "../components/tag/TagsList";
 
 export default function HomePage() {
   const list: ItemInterface[] = useSelector(
@@ -45,8 +45,14 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-row gap-4">
-      <TagBar tags={tagList} onTagSelect={onTagSelectHandler} />
+    <div className="flex flex-row gap-4 sm:gap-6 lg:gap-16 2xl:gap-32">
+      <TagsList
+        isFlexCol={true}
+        tags={tagList}
+        clickable={true}
+        onTagClick={onTagSelectHandler}
+        isTagBackground={false}
+      />
       <div className="flex flex-col gap-2 flex-1 min-w-48">
         <Input
           name="search"

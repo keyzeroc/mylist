@@ -36,7 +36,7 @@ export const Input = forwardRef(function Input(
         onChange={onChangeHandler}
         id={name}
         className={
-          "p-2 bg-slate-300/20 w-full shadow-sm rounded-md border border-color-accent focus:outline-none focus:bg-slate-300/40"
+          "p-2 bg-slate-100/10 w-full shadow-sm rounded-md border border-color-accent focus:outline-none focus:bg-slate-300/20"
         }
         name={name}
         type="text"

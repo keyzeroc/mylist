@@ -8,7 +8,13 @@ type Props = {
   type?: "submit" | "button" | "reset";
 };
 
-function Icon({ icon, alt, onClick, className, type = "button" }: Props) {
+function Icon({
+  icon,
+  alt,
+  onClick,
+  className,
+  type = "button",
+}: Props) {
   const theme = useSelector((state: RootState) => state.theme.currentTheme);
   return (
     <button
@@ -17,7 +23,9 @@ function Icon({ icon, alt, onClick, className, type = "button" }: Props) {
       onClick={onClick}
     >
       <img
-        className={`w-4 h-4 ${theme === "dark" ? "invert" : ""}`}
+        className={`w-4 h-4 ${
+          theme === "dark" ? "invert" : ""
+        }`}
         src={icon}
         alt={alt}
       />

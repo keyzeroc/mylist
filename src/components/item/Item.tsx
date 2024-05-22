@@ -27,7 +27,7 @@ export default function Item({ id, link, name, tags }: ItemProps) {
   };
 
   return (
-    <div className="w-full flex bg-color-accent/20 flex-col rounded-md gap-2 border border-color-accent">
+    <div className="w-full flex bg-color-accent/10 rounded-md flex-col gap-2 border-b border-color-accent">
       {isEditMode && (
         <EditItem id={id} link={link} tags={tags} name={name} type="edit" />
       )}

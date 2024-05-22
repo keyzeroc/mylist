@@ -2,11 +2,12 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { switchTheme } from "../../store/ThemeSlice";
 import { themeIcon } from "../../assets/images";
+import Icon from "./Icon";
 
 const links = [
   {
     link: `/`,
-    name: "Home",
+    name: "List",
   },
   {
     link: `/add`,
@@ -14,32 +15,34 @@ const links = [
   },
   {
     link: `/load`,
-    name: "Load",
+    name: "Import/Export",
   },
 ];
 
 export default function Navbar() {
   const dispatch = useDispatch();
   return (
-    <nav className="w-full h-12 border-b bg-color-accent flex flex-row gap-2 px-4 items-center justify-between">
-      <div className="flex gap-2 text-lg">
+    <nav className="w-full flex flex-row gap-2 p-6 justify-end uppercase">
+      <div className="flex gap-8 text-lg items-center">
         {links.map((link) => (
           <NavLink
             key={"nav:" + link.link}
             to={link.link}
-            className={({ isActive }) => (isActive ? "underline" : undefined)}
+            className={({ isActive }) =>
+              (isActive ? "bg-color-accent/40" : undefined) +
+              " px-2 hover:bg-color-accent/20 rounded-md"
+            }
             end
           >
             {link.name}
           </NavLink>
         ))}
+        <Icon
+          icon={themeIcon}
+          alt="switch theme"
+          onClick={() => dispatch(switchTheme())}
+        />
       </div>
-      <button
-        className="min-w-10 min-h-10 w-10 h-10"
-        onClick={() => dispatch(switchTheme())}
-      >
-        <img src={themeIcon} alt="change theme" />
-      </button>
     </nav>
   );
 }

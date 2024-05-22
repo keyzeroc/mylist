@@ -6,6 +6,7 @@ type TagsListProps = {
   clickableIcon?: string;
   onTagClick?: (tag: string) => void;
   isFlexCol?: boolean;
+  isTagBackground?: boolean;
 };
 
 export default function TagsList({
@@ -14,6 +15,7 @@ export default function TagsList({
   onTagClick,
   clickableIcon,
   isFlexCol,
+  isTagBackground
 }: TagsListProps) {
   return (
     <ul
@@ -27,6 +29,7 @@ export default function TagsList({
             clickable={clickable}
             onTagClick={onTagClick}
             clickableIcon={clickableIcon}
+            isTagBackground={isTagBackground}
           />
         ))}
     </ul>
