@@ -14,7 +14,7 @@ export default function RootLayout() {
       >
         <Notifications />
         <Navbar />
-        <main className={`h-full pt-10 px-4 md:px-10 2xl:px-18`}>
+        <main className={`h-full pt-10 pb-10 px-4 md:px-10 2xl:px-20`}>
           <Outlet />
         </main>
       </div>
