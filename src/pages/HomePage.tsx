@@ -3,7 +3,7 @@ import { ItemInterface } from "../types/custom-types";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import ItemList from "../components/item/ItemList";
-import { useListTags } from "../hooks/useListTags";
+import { useTagsList } from "../hooks/useTagsList";
 import TagsList from "../components/tag/TagsList";
 import { useFilteredList } from "../hooks/useFilteredList";
 
@@ -11,10 +11,11 @@ export default function HomePage() {
   const list: ItemInterface[] = useSelector(
     (state: RootState) => state.list.list
   );
-  const [tagList] = useListTags();
-  const {filteredList, setNewSearchValue, setNewSelectedTag} = useFilteredList({
-    list,
-  });
+  const [tagList] = useTagsList();
+  const { filteredList, setNewSearchValue, setNewSelectedTag } =
+    useFilteredList({
+      list,
+    });
 
   return (
     <div className="flex flex-row gap-2 sm:gap-8 lg:gap-14 2xl:gap-20">

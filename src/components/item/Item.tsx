@@ -3,7 +3,7 @@ import { ItemInterface, NotificationInterface } from "../../types/custom-types";
 import Icon from "../UI/Icon";
 import { copyIcon, editIcon } from "../../assets/images";
 import TagsList from "../tag/TagsList";
-import EditItem from "./EditItem";
+import EditItem2 from "./EditItem2";
 import { useDispatch } from "react-redux";
 import { pushNotification } from "../../store/NotificationSlice";
 
@@ -29,7 +29,7 @@ export default function Item({ id, link, name, tags }: ItemProps) {
   return (
     <div className="w-full flex bg-color-accent/10 rounded-md flex-col gap-2 border-b border-color-accent">
       {isEditMode && (
-        <EditItem id={id} link={link} tags={tags} name={name} type="edit" />
+        <EditItem2 id={id} link={link} tags={tags} name={name} type="edit" />
       )}
       {!isEditMode && (
         <>

@@ -2,7 +2,7 @@ export interface ItemInterface {
   id?: string;
   name: string;
   link: string;
-  tags?: Array<string>;
+  tags: Array<string>;
 }
 export interface NotificationInterface {
   id?: string;
