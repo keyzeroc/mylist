@@ -6,16 +6,17 @@ interface useFilteredListProps {
 }
 export const useFilteredList = ({ list }: useFilteredListProps) => {
   const [filteredList, setFilteredList] = useState<Array<ItemInterface>>([]);
-  const [selectedTag, setSelectedTag] = useState("");
+  // const [selectedTag, setSelectedTag] = useState("");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     filterList()
-  }, [searchValue, selectedTag, list]);
+  }, [searchValue, selectedTags, list]);
 
   const filterList = () => {
     const searchArray = searchValue.toLowerCase().split(" ");
-    searchArray.push(selectedTag.toLocaleLowerCase().trim());
+    // searchArray.push(selectedTags.join(" "));
     setFilteredList(
       list.filter((item) => {
         const itemFields =
@@ -32,6 +33,12 @@ export const useFilteredList = ({ list }: useFilteredListProps) => {
             break;
           }
         }
+        for (const tag of selectedTags) {
+          if (!item?.tags.includes(tag)) {
+            isDesiredItem = false;
+            break;
+          }
+        }
         return isDesiredItem;
       })
     );
@@ -42,7 +49,14 @@ export const useFilteredList = ({ list }: useFilteredListProps) => {
   }
 
   const setNewSelectedTag = (newTag: string) => {
-    setSelectedTag((prevSelectedTag) => (prevSelectedTag === newTag ? "" : newTag));
+    // setSelectedTag((prevSelectedTag) => (prevSelectedTag === newTag ? "" : newTag));
+    setSelectedTags((prevSelectedTags) => {
+      if (prevSelectedTags.includes(newTag)) {
+        return prevSelectedTags.filter(tag => tag !== newTag)
+      } else {
+        return [...prevSelectedTags, newTag];
+      }
+    })
   }
 
   return { filteredList, setNewSearchValue, setNewSelectedTag };

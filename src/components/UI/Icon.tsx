@@ -5,7 +5,9 @@ type Props = {
   alt: string;
   onClick?: () => void;
   className?: string;
+  iconClassName?: string;
   type?: "submit" | "button" | "reset";
+  customSize?: number;
 };
 
 function Icon({
@@ -14,6 +16,7 @@ function Icon({
   onClick,
   className,
   type = "button",
+  iconClassName,
 }: Props) {
   const theme = useSelector((state: RootState) => state.theme.currentTheme);
   return (
@@ -25,7 +28,7 @@ function Icon({
       <img
         className={`w-4 h-4 ${
           theme === "dark" ? "invert" : ""
-        }`}
+        } ${iconClassName}`}
         src={icon}
         alt={alt}
       />

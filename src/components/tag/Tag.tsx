@@ -28,8 +28,8 @@ export default function Tag({
     <li
       className={`px-1 rounded-sm flex flex-row items-center gap-1 text-nowrap ${
         !isTagBackground && !isSelected && "hover:bg-color-accent/20"
-      } ${isSelected && "bg-color-accent/40"} ${
-        isTagBackground && "bg-color-accent/40"
+      } ${isSelected && "bg-color-accent/20"} ${
+        isTagBackground && "bg-color-accent/20"
       }`}
     >
       {!clickable && !clickableIcon && <p>{tag}</p>}

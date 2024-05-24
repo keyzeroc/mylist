@@ -27,14 +27,14 @@ export default function Item({ id, link, name, tags }: ItemProps) {
   };
 
   return (
-    <div className="w-full flex bg-color-accent/10 rounded-md flex-col gap-2 border-b border-color-accent">
+    <div className="w-full flex flex-col gap-2 bg-color-accent/10 rounded-md border-b border-color-accent">
       {isEditMode && (
         <EditItem2 id={id} link={link} tags={tags} name={name} type="edit" />
       )}
       {!isEditMode && (
         <>
           <div className="flex flex-row gap-2 px-2 items-center justify-center">
-            <p className="self-center font-medium px-2 py-1">
+            <p className="self-center text-lg px-2 py-1">
               <a href={link} target="_blank">
                 {name}
               </a>

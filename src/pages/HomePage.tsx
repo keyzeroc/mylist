@@ -19,13 +19,15 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-row gap-2 sm:gap-8 lg:gap-14 2xl:gap-20">
-      <TagsList
-        isFlexCol={true}
-        tags={tagList}
-        clickable={true}
-        onTagClick={setNewSelectedTag}
-        isTagBackground={false}
-      />
+      <div className="pt-16">
+        <TagsList
+          isFlexCol={true}
+          tags={tagList}
+          clickable={true}
+          onTagClick={setNewSelectedTag}
+          isTagBackground={false}
+        />
+      </div>
       <div className="flex flex-col gap-2 flex-1 min-w-48">
         <Input
           name="search"

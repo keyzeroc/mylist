@@ -13,27 +13,27 @@ body,
 
 @layer base {
   @font-face {
-    font-family: 'Jaldi';
-    src: url("https://fonts.googleapis.com/css2?family=Jaldi:wght@400;700&display=swap" );
+    font-family: "Jaldi";
+    src: url("https://fonts.googleapis.com/css2?family=Jaldi:wght@400;700&display=swap");
   }
   :root {
     --color-bg: 49, 46, 129;
-    --color-gradient-1: 32, 12, 49;
-    --color-gradient-2: 24, 12, 48;
+    --color-gradient-1: 31, 31, 46;
+    --color-gradient-2: 29, 31, 48;
     --color-content: 245, 245, 245;
-    --color-accent: 39, 155, 99;
-    --color-accent-2: 39, 136, 88;
+    --color-accent: 115, 90, 175;
+    --color-accent-2: 102, 80, 154;
     --color-complementary-1: 124, 34, 115;
   }
 }
 
 .dark {
   --color-bg: 49, 46, 129;
-  --color-gradient-1: 32, 12, 49;
-  --color-gradient-2: 24, 12, 48;
+  --color-gradient-1: 31, 31, 46;
+  --color-gradient-2: 29, 31, 48;
   --color-content: 245, 245, 245;
-  --color-accent: 39, 155, 99;
-  --color-accent-2: 39, 136, 88;
+  --color-accent: 115, 90, 175;
+  --color-accent-2: 102, 80, 154;
   --color-complementary-1: 124, 34, 115;
 }
 

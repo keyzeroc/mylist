@@ -10,7 +10,7 @@ export default function RootLayout() {
   return (
     <>
       <div
-        className={`min-h-full text-color-content bg-color-bg bg-gradient-to-b from-color-gradient-1 to-color-gradient-2 font-['Jaldi'] ${theme}`}
+        className={`min-h-full text-color-content bg-color-bg bg-gradient-to-r from-color-gradient-1 to-color-gradient-2 font-['Jaldi'] text-lg ${theme}`}
       >
         <Notifications />
         <Navbar />
