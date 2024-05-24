@@ -14,6 +14,9 @@ export default {
         'color-accent': 'rgba(var(--color-accent), <alpha-value>)',
         'color-accent-2': 'rgba(var(--color-accent-2), <alpha-value>)',
         'color-complementary-1': 'rgba(var(--color-complementary-1), <alpha-value>)'
+      },
+      spacing:{
+        '17': '4.4rem'
       }
     },
   },

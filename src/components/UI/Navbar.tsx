@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { switchTheme } from "../../store/ThemeSlice";
-import { themeIcon, githubIcon } from "../../assets/images";
+import { themeIcon } from "../../assets/images";
 import Icon from "./Icon";
 
 const links = [
