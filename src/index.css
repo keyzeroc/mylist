@@ -39,11 +39,11 @@ body,
 }
 
 .light {
-  --color-bg: 252, 207, 241;
-  --color-gradient-1: 251, 207, 232;
-  --color-gradient-2: 221, 214, 254;
+  --color-bg: 246, 232, 234;
+  --color-gradient-1: 246, 233, 235;
+  --color-gradient-2: 231, 219, 221;
   --color-content: 18, 1, 30;
-  --color-accent: 208, 158, 253;
-  --color-accent-2: 190, 146, 238;
+  --color-accent: 164, 132, 215;
+  --color-accent-2: 187, 163, 225;
   --color-complementary-1: 130, 28, 233;
 }

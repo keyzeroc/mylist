@@ -19,7 +19,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-row gap-2 sm:gap-8 lg:gap-14 2xl:gap-20">
-      <div>
+      <div className="pt-17">
         <TagsList
           isFlexCol={true}
           tags={tagList}
