@@ -1,11 +1,26 @@
-export const themeIcon =
-  "https://cdn-icons-png.flaticon.com/512/8138/8138707.png";
-export const copyIcon = "https://cdn-icons-png.flaticon.com/512/126/126498.png";
-export const deleteIcon =
-  "https://cdn-icons-png.flaticon.com/512/1214/1214428.png";
-export const editIcon =
-  "https://cdn-icons-png.flaticon.com/512/2356/2356780.png";
-export const saveIcon =
-  "https://cdn-icons-png.flaticon.com/512/5662/5662990.png";
-export const githubIcon = 
-"https://cdn-icons-png.flaticon.com/512/25/25657.png";
+export const IMAGES = {
+  theme: {
+    image: new URL("./theme.png", import.meta.url).href,
+    alt: "switch theme",
+  },
+  copy: {
+    image: new URL("./copy.png", import.meta.url).href,
+    alt: "copy",
+  },
+  delete: {
+    image: new URL("./delete.png", import.meta.url).href,
+    alt: "delete",
+  },
+  edit: {
+    image: new URL("./edit.png", import.meta.url).href,
+    alt: "edit",
+  },
+  save: {
+    image: new URL("./save.png", import.meta.url).href,
+    alt: "save",
+  },
+  github: {
+    image: new URL("./github.png", import.meta.url).href,
+    alt: "github",
+  },
+};

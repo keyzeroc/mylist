@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { ItemInterface, NotificationInterface } from "../../types/custom-types";
 import Icon from "../UI/Icon";
-import { copyIcon, editIcon } from "../../assets/images";
 import TagsList from "../tag/TagsList";
-import EditItem2 from "./EditItem2";
+import EditItem2 from "./EditItem";
 import { useDispatch } from "react-redux";
 import { pushNotification } from "../../store/NotificationSlice";
+import { IMAGES } from "../../assets/images";
 
 interface ItemProps extends ItemInterface {}
 
@@ -40,7 +40,11 @@ export default function Item({ id, link, name, tags }: ItemProps) {
               </a>
             </p>
             <div className="min-w-max max-w-min">
-              <Icon icon={copyIcon} alt="copy" onClick={onCopyLink} />
+              <Icon
+                icon={IMAGES.copy.image}
+                alt={IMAGES.copy.alt}
+                onClick={onCopyLink}
+              />
             </div>
           </div>
           <div className="px-2">
@@ -50,8 +54,8 @@ export default function Item({ id, link, name, tags }: ItemProps) {
       )}
       <div className="flex flex-row">
         <Icon
-          icon={editIcon}
-          alt={isEditMode ? "confirm changes" : "edit"}
+          icon={IMAGES.edit.image}
+          alt={isEditMode ? "confirm changes" : IMAGES.edit.alt}
           onClick={onSwitchEditModeHandler}
         />
       </div>

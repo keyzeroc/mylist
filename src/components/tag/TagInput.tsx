@@ -1,6 +1,6 @@
 import { Input } from "../UI/Input";
 import TagsList from "./TagsList";
-import { deleteIcon } from "../../assets/images";
+import { IMAGES } from "../../assets/images";
 import { useTags } from "../../hooks/useTags";
 import { useEffect } from "react";
 import { RootState } from "../../store/store";
@@ -79,7 +79,7 @@ export default function TagInput({
         <TagsList
           tags={tags}
           clickable={true}
-          clickableIcon={deleteIcon}
+          clickableIcon={IMAGES.delete.image}
           onTagClick={onRemoveTagHandler}
         />
       </div>

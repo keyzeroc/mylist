@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { switchTheme } from "../../store/ThemeSlice";
-import { themeIcon, githubIcon } from "../../assets/images";
+import { IMAGES } from "../../assets/images";
 import Icon from "./Icon";
 
 const links = [
@@ -41,8 +41,8 @@ export default function Navbar() {
       <div className="flex gap-8 ml-auto">
         <Icon
           iconClassName={"w-8 h-8"}
-          icon={themeIcon}
-          alt="switch theme"
+          icon={IMAGES.theme.image}
+          alt={IMAGES.theme.alt}
           onClick={() => dispatch(switchTheme())}
         />
         <a
@@ -50,7 +50,11 @@ export default function Navbar() {
           href="https://github.com/keyzeroc/mylist"
           target="_blank"
         >
-          <Icon iconClassName={"w-8 h-8"} icon={githubIcon} alt="github" />
+          <Icon
+            iconClassName={"w-8 h-8"}
+            icon={IMAGES.github.image}
+            alt={IMAGES.github.alt}
+          />
         </a>
       </div>
     </nav>

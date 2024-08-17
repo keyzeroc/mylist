@@ -6,7 +6,6 @@ interface useTagsProps {
 }
 
 export const useTags = ({ oldTags }: useTagsProps) => {
-
   const [tagList] = useTagsList();
   const [tags, setTags] = useState<Array<string>>(oldTags || []);
   const [suggestedTags, setSuggestedTags] = useState<string[]>([]);
