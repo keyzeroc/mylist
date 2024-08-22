@@ -30,6 +30,7 @@ export default function HomePage() {
       </div>
       <div className="flex flex-col gap-2 flex-1 min-w-48">
         <Input
+          autocomplete="off"
           name="search"
           placeholder="type to search items"
           onChangeCallback={setNewSearchValue}

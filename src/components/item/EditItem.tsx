@@ -63,7 +63,7 @@ export default function EditItem({
       "Are you sure you want to remove item? There is no going back."
     );
     if (!userConfirm) return;
-    
+
     dispatch(removeItem({ id }));
 
     const notification: NotificationInterface = {
@@ -76,12 +76,14 @@ export default function EditItem({
   return (
     <form className="flex flex-col gap-2" onSubmit={onFormSubmit}>
       <Input
+        autocomplete="off"
         className={`${type === "edit" && "p-2"}`}
         name="name"
         ref={itemNameRef}
         label={`${type === "new" ? "Enter" : "Edit"} name:`}
       />
       <Input
+        autocomplete="off"
         className={`${type === "edit" && "p-2"}`}
         name="link"
         ref={itemLinkRef}
@@ -96,7 +98,11 @@ export default function EditItem({
           type="submit"
         />
         {type === "edit" && (
-          <Icon icon={IMAGES.delete.image} alt={IMAGES.delete.alt} onClick={onRemoveHandler} />
+          <Icon
+            icon={IMAGES.delete.image}
+            alt={IMAGES.delete.alt}
+            onClick={onRemoveHandler}
+          />
         )}
       </div>
     </form>
