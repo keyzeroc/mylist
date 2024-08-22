@@ -43,7 +43,7 @@ export default function Tag({
           <p>{tag}</p>
           <Icon
             icon={clickableIcon as string}
-            alt="x"
+            alt="remove tag"
             onClick={() => onTagClick && onTagClick(tag)}
           />
         </>
